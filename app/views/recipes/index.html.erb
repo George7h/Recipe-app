@@ -5,3 +5,20 @@
       <li><%= link_to 'New Recipe', new_recipe_path %></li>
     <% end %>
   </ul>
+
+  <ul>
+    <% @recipes.each_with_index do |recipe, index| %>
+      <li>
+        <%= link_to "/recipes/#{recipe.id}" do %>
+          <%= recipe.name %>
+        <% end %>
+        <% if can? :destroy, recipe %>
+          <%= form_with model: recipe, url: recipe_path(recipe), method: :delete do |form| %>
+            <%= form.submit "Delete" %>
+          <% end %>
+        <% end %>
+        <h2> <%= recipe.description %> </h2>
+      </li>
+    <% end %>
+  </ul>
+</div>
