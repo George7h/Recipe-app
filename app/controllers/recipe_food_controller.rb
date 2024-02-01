@@ -1,5 +1,6 @@
 class RecipeFoodController < ApplicationController
   def index; end
+
   def new
     @recipe_food = RecipeFood.new
   end
@@ -41,3 +42,4 @@ class RecipeFoodController < ApplicationController
   def recipe_food_params
     params.require(:recipe_food).permit(:quantity, :food_id)
   end
+end
