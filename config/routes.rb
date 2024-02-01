@@ -12,6 +12,7 @@ devise_scope :user do
 end
 
 resources :foods, only: [:index, :new, :create, :destroy]
+resources :shopping_lists, only: [:index]
 resources :recipes
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
