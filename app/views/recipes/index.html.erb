@@ -1,0 +1,7 @@
+<div id="recipes">
+  <h1>Recipes</h1>
+  <ul>
+    <% if can? :create, Recipe %>
+      <li><%= link_to 'New Recipe', new_recipe_path %></li>
+    <% end %>
+  </ul>
