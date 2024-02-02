@@ -8,7 +8,7 @@ devise_scope :user do
     root :to => 'foods#index', as: :authenticated_root
   end
   unauthenticated :user do
-    root :to => 'devise/sessions#new', as: :unauthenticated_root
+    root :to => 'recipes#public_recipes', as: :unauthenticated_root
   end
 end
 
