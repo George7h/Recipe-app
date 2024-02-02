@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
 devise_scope :user do
   authenticated :user do
-    root :to => 'foods#index', as: :authenticated_root
+    root :to => 'recipes#index', as: :authenticated_root
   end
   unauthenticated :user do
     root :to => 'recipes#public_recipes', as: :unauthenticated_root
@@ -15,7 +15,7 @@ end
 resources :foods, only: [:index, :new, :create, :destroy]
 resources :shopping_lists, only: [:index]
 resources :recipes, only: [:index, :new, :create, :show, :update, :destroy] do
-  resources :recipe_foods
+  resources :recipe_food
 end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

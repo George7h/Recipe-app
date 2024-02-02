@@ -1,7 +1,7 @@
 
   <h1>Create a new Recipe</h1>
 
-  <%= form_with model: @recipe, url: recipes_path do |f| %>
+  <%= form_with model: [@recipe], data: { turbo: false }, local: true do |f| %>
     <div>
       <%= f.label :name %><br>
       <%= f.text_field :name, required: true %>

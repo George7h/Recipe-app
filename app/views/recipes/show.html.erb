@@ -1,16 +1,13 @@
 <div>
-  <h1>Recipe details</h1>
   <div>
     <h1><%= @recipe.name %></h1>
     <% if current_user == @recipe.user %>
       <div role="group" aria-label="Recipe Visibility">
-        <%= button_to recipe_path(@recipe.id), :method => :patch, data: { toggle: "collapse", target: "#visibilityToggle" } do %>
+        <%= button_to recipe_path(@recipe.id), :method => :patch do %>
           <% if @recipe.public %>
             Public
-            <i></i>
           <% else %>
             Private
-            <i></i>
           <% end %>
         <% end %>
       </div>
@@ -23,8 +20,8 @@
 
   <% if current_user == @recipe.user %>
     <div>
-      <%= link_to "Generate shopping List", shopping_lists_path, %>
-      <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe.id) %>
+      <%= link_to "Generate Shopping List", shopping_lists_path %>
+      <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id) %>
     </div>
   <% end %>
 
@@ -53,4 +50,8 @@
       </tbody>
     </table>
   </div>
+
+  <% if flash[:success].present? %>
+    <p><%= flash[:success] %></p>
+  <% end %>
 </div>
