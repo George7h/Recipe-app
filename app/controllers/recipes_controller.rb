@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @recipes = @user.recipes.order(id: :desc)
+    @recipes = current_user.recipes.order(id: :desc)
   end
 
   def show
