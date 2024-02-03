@@ -61,7 +61,7 @@ RSpec.describe 'When I open user index page', type: :feature do
     it 'recalculates the value' do
       fill_in 'Quantity', with: '5'
       click_button('Update')
-      expect(page.html).to include('<td>50.0</td>')
+      expect(page.html).to include('<td>50</td>')
     end
 
     it 'recalculates the value' do

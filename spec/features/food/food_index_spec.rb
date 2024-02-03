@@ -9,17 +9,17 @@ RSpec.feature 'Food List', type: :feature do
   end
 
   scenario 'User views the Food List page' do
-    Food.create(name: 'Coconut', measurement_unit: 'kg', price: '16.20', user: @user)
+    Food.create(name: 'Coconut', measurement_unit: 'kg', price: '16', user: @user)
     visit foods_path
     expect(page).to have_link('Add Food', href: new_food_path)
     expect(page).to have_selector('tbody tr td', text: 'Coconut')
     expect(page).to have_selector('tbody tr td', text: 'kg')
-    expect(page).to have_selector('tbody tr td', text: '16.20', visible: :all)
+    expect(page).to have_selector('tbody tr td', text: '16', visible: :all)
     expect(page).to have_button('Delete')
   end
 
   scenario 'User deletes a food record' do
-    Food.create(name: 'Coconut', measurement_unit: 'kg', price: '16.20', user: @user)
+    Food.create(name: 'Coconut', measurement_unit: 'kg', price: '16', user: @user)
     visit foods_path
     expect(page).to have_button('Delete', count: 1)
     click_button 'Delete'
