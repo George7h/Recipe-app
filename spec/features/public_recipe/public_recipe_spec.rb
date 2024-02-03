@@ -3,26 +3,26 @@ require 'rails_helper'
 RSpec.describe 'When I open user index page', type: :feature do
   before(:each) do
     User.delete_all
-    @user1 = User.create(name: 'Mike', email: 'Mike@example.com', password: 'Recipes123')
-    @user2 = User.create(name: 'Steven', email: 'Steven@example.com', password: 'Recipes123')
+    @user1 = User.create(name: 'Lily', email: 'lily@example.com', password: 'topsecret')
+    @user2 = User.create(name: 'Dave', email: 'dave@example.com', password: 'topsecret')
 
     @user1.confirm
     @user2.confirm
     sleep(1)
 
     visit new_user_session_path
-    fill_in 'Email', with: 'Mike@example.com'
-    fill_in 'Password', with: 'Recipes123'
+    fill_in 'Email', with: 'lily@example.com'
+    fill_in 'Password', with: 'topsecret'
     click_button 'Log in'
     sleep(1)
 
-    @food1 = Food.create(user: @user2, name: 'Tomato', measurement_unit: 'kg', price: 10, quantity: 4)
-    @food2 = Food.create(user: @user2, name: 'Lemon', measurement_unit: 'kg', price: 10, quantity: 5)
-    @recipe1 = Recipe.create(user: @user1, name: 'Pasta', description: 'Delicious! ' * 5,
+    @food1 = Food.create(user: @user2, name: 'Apple', measurement_unit: 'kg', price: 10, quantity: 4)
+    @food2 = Food.create(user: @user2, name: 'Pear', measurement_unit: 'kg', price: 10, quantity: 5)
+    @recipe1 = Recipe.create(user: @user1, name: 'Japanese Salad', description: 'I love this recipe very much! ' * 5,
                              preparation_time: 0, cooking_time: 0, public: true)
-    @recipe2 = Recipe.create(user: @user2, name: 'Greek Salad', description: 'This salad is awesome!',
+    @recipe2 = Recipe.create(user: @user2, name: 'Greek Salad', description: 'This is my favourite salad!',
                              preparation_time: 0, cooking_time: 0, public: true)
-    @recipe3 = Recipe.create(user: @user2, name: 'Chicken', description: 'So Juicy!',
+    @recipe3 = Recipe.create(user: @user2, name: 'Ceaser Salad', description: 'Delicious food!',
                              preparation_time: 0, cooking_time: 0, public: false)
 
     @recipe_food1 = RecipeFood.create(recipe: @recipe2, food: @food1, quantity: 3)
@@ -34,10 +34,10 @@ RSpec.describe 'When I open user index page', type: :feature do
     expect(page).to have_http_status :ok
   end
 
-  it 'shows the names of public recipes' do
+  it 'shows the names of all public recipes' do
     expect(page).to have_content('Greek Salad')
-    expect(page).to have_content('Pasta')
-    expect(page).to_not have_content('Chicken')
+    expect(page).to have_content('Japanese Salad')
+    expect(page).to_not have_content('Ceaser Salad')
   end
 
   it 'calculates and shows the correct Total food items' do
@@ -45,7 +45,7 @@ RSpec.describe 'When I open user index page', type: :feature do
   end
 
   it 'calculates and shows the correct Total price' do
-    expect(page).to have_content('Total price: 100.0')
+    expect(page).to have_content('Total price: 100')
   end
 
   it 'shows the REMOVE button 1 time' do

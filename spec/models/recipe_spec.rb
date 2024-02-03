@@ -22,7 +22,7 @@ RSpec.describe Recipe, type: :model do
   end
 
   before :all do
-    @user = User.create(name: 'Mike', email: 'Mike@example.com', password: 'Recipe123')
+    @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
   end
 
   context '#create validates required fields' do

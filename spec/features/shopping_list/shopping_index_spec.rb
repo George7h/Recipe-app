@@ -16,11 +16,11 @@ RSpec.describe 'shopping_lists/index', type: :view do
   end
 
   it 'renders the amount of food items to buy' do
-    expect(rendered).to have_content('Amount of Food items to buy: 1')
+    expect(rendered).to have_content('Total: $5.00 - 1 items')
   end
 
   it 'renders the total value of food needed' do
-    expect(rendered).to have_content('Total value of Food needed: $5.00')
+    expect(rendered).to have_content('Total: $5.00 - 1 items')
   end
 
   it 'renders the table headers' do

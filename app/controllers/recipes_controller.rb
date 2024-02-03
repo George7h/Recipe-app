@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @recipes = current_user.recipes.order(id: :desc)
+    @recipes = current_user.recipes.order(id: :asc)
   end
 
   def show
@@ -18,10 +18,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
     if @recipe.save
-      flash[:success] = 'Created successfully!'
+      flash[:success] = 'recipe created successfully!'
       redirect_to recipes_url
     else
-      flash.now[:error] = 'Recipe could not be created!'
+      flash.now[:error] = 'Error: recipe could not be created!'
       render :new, locals: { recipe: @recipe }
     end
   end

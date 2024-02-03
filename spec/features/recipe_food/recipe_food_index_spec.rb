@@ -3,18 +3,18 @@ require 'rails_helper'
 RSpec.describe 'When I open user index page', type: :feature do
   before(:each) do
     User.delete_all
-    @user = User.create(name: 'Mike', email: 'Mike@example.com', password: 'Recipes123')
+    @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
     @user.confirm
     sleep(1)
 
     visit new_user_session_path
-    fill_in 'Email', with: 'Mike@example.com'
-    fill_in 'Password', with: 'Recipes123'
+    fill_in 'Email', with: 'tom@example.com'
+    fill_in 'Password', with: 'topsecret'
     click_button 'Log in'
     sleep(1)
 
-    @food1 = Food.create(user: @user, name: 'Coconut', measurement_unit: 'kg', price: 10, quantity: 4)
-    @food2 = Food.create(user: @user, name: 'Lemon', measurement_unit: 'kg', price: 10, quantity: 5)
+    @food1 = Food.create(user: @user, name: 'Apple', measurement_unit: 'kg', price: 10, quantity: 4)
+    @food2 = Food.create(user: @user, name: 'Pear', measurement_unit: 'kg', price: 10, quantity: 5)
     @recipe = Recipe.create(user: @user, name: 'Greek Salad', description: 'This is my favourite salad!',
                             preparation_time: 0, cooking_time: 0)
     @recipe_food1 = RecipeFood.create(recipe: @recipe, food: @food1, quantity: 3)
@@ -35,8 +35,8 @@ RSpec.describe 'When I open user index page', type: :feature do
   end
 
   it 'shows food name for each food' do
-    expect(page).to have_content('Coconut')
-    expect(page).to have_content('Lemon')
+    expect(page).to have_content('Apple')
+    expect(page).to have_content('Pear')
   end
 
   it 'shows correct quantity for each food' do
@@ -63,7 +63,7 @@ RSpec.describe 'When I open user index page', type: :feature do
       within first('.ingredient') do
         click_button('Delete')
       end
-      expect(page).to_not have_content('Coconut')
+      expect(page).to_not have_content('Apple')
     end
   end
 end

@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe 'When I open user show page', type: :feature do
   before(:each) do
     User.delete_all
-    @user = User.create(name: 'Mike', email: 'Mike@example.com', password: 'Recipes123')
+    @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
     @user.confirm
     sleep(1)
 
     visit new_user_session_path
-    fill_in 'Email', with: 'Mike@example.com'
-    fill_in 'Password', with: 'Recipes123'
+    fill_in 'Email', with: 'tom@example.com'
+    fill_in 'Password', with: 'topsecret'
     click_button 'Log in'
     sleep(1)
 
@@ -27,11 +27,11 @@ RSpec.describe 'When I open user show page', type: :feature do
   end
 
   it 'shows the cooking time of the recipe' do
-    expect(page).to have_content('Cooking time: 1.0 hour')
+    expect(page).to have_content('Cooking time: 1 hour')
   end
 
   it 'shows the preparation time of the recipe' do
-    expect(page).to have_content('Preparation time: 2.0 hours')
+    expect(page).to have_content('Preparation time: 2 hours')
   end
 
   it 'shows the full description of the recipes' do

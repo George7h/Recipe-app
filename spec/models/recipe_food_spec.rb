@@ -11,8 +11,8 @@ RSpec.describe RecipeFood, type: :model do
   let(:quantity_integer) { { 'recipe' => @recipe, 'food' => @food, 'quantity' => 5 } }
 
   before :all do
-    @user = User.create(name: 'Mike', email: 'Mike@example.com', password: 'Recipe123')
-    @recipe = Recipe.create(user: @user, name: 'Greek Salad', preparation_time: 0, cooking_time: 0)
+    @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
+    @recipe = Recipe.create(user: @user, name: 'Greek Salad', preparation_time: 0, cooking_time: 0, user_id: @user.id)
     @food = Food.create(user: @user, name: 'Tomato', measurement_unit: 'kg', price: 10, quantity: 2)
   end
 
