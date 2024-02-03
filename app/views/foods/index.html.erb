@@ -1,24 +1,28 @@
-<h1>Food List</h1>
-<%= link_to "Add Food", new_food_path, class: "button" %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Measurement Unit</th>
-      <th>Price</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @foodlist.each do |food| %>
+<div class="container">
+  <header>
+    <h1>Food List</h1>
+    <%= link_to "Add Food", new_food_path, class: "button button-primary" %>
+  </header>
+  <table class="shopping-list">
+    <thead>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.measurement_unit %></td>
-        <td><%= food.price %></td>
-        <td>
-           <%= button_to "Delete", food_path(food), method: :delete, data: { confirm: "Are you sure?" } %>
-        </td>
+        <th>Name</th>
+        <th>Measurement Unit</th>
+        <th>Price</th>
+        <th>Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @foodlist.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= food.price %></td>
+          <td>
+            <%= button_to "Delete", food_path(food), method: :delete, data: { confirm: "Are you sure?" }, class: "button button-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

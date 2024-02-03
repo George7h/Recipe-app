@@ -1,26 +1,29 @@
+<div class="container">
+  <div class="header">
+    <h1>Shopping List</h1>
+    <p>Total: <%= number_to_currency(@total_price) %> - <%= @ingredients.length %> items</p>
+  </div>
 
-<h1>Shopping List</h1>
-
-<p>Amount of Food items to buy: <%= @ingredients.length %> </p>
-<p>Total value of Food needed: <%= number_to_currency(@total_price) %> </p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @ingredients.each do |food_name, ingredients| %>
-      <% ingredients.each do |ingredient| %>
-        <tr>
-          <td><%= food_name %></td>
-          <td><%= @missing_numbers[food_name] %> <%= ingredient.food.measurement_unit %> </td>
-          <td><%= number_to_currency(ingredient.food.price * @missing_numbers[food_name]) %></td>
-        </tr>
+  <table class="shopping-list">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ingredients.each do |food_name, ingredients| %>
+        <% ingredients.each do |ingredient| %>
+          <tr>
+            <td><%= food_name %></td>
+            <td><%= @missing_numbers[food_name] %> <%= ingredient.food.measurement_unit %></td>
+            <td><%= number_to_currency(ingredient.food.price * @missing_numbers[food_name]) %></td>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+  <button class="button">Clear List</button>
+</div>

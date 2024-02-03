@@ -1,9 +1,9 @@
-<div>
-  <div>
+<div class="container">
+  <div class="recipe-header">
     <h1><%= @recipe.name %></h1>
     <% if current_user == @recipe.user %>
       <div role="group" aria-label="Recipe Visibility">
-        <%= button_to recipe_path(@recipe.id), :method => :patch do %>
+        <%= button_to recipe_path(@recipe.id), method: :patch, class: "button" do %>
           <% if @recipe.public %>
             Public
           <% else %>
@@ -19,14 +19,14 @@
   </div>
 
   <% if current_user == @recipe.user %>
-    <div>
-      <%= link_to "Generate Shopping List", shopping_lists_path %>
-      <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id) %>
+    <div class="user-actions">
+      <%= link_to "Generate Shopping List", shopping_lists_path, class: "button" %>
+      <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class: "button" %>
     </div>
   <% end %>
 
-  <div>
-    <table>
+  <div class="ingredient-table-container">
+    <table class="ingredient-table">
       <thead>
         <tr>
           <th>Food</th>
@@ -42,8 +42,8 @@
             <td><%= recipe_food.quantity %></td>
             <td><%= recipe_food.food.price * recipe_food.quantity %></td>
             <td>
-              <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete %>
-              <%= link_to "Edit", edit_recipe_recipe_food_path(@recipe, recipe_food) %>
+              <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, class: "button" %>
+              <%= link_to "Edit", edit_recipe_recipe_food_path(@recipe, recipe_food), class: "button" %>
             </td>
           </tr>
         <% end %>
@@ -52,6 +52,6 @@
   </div>
 
   <% if flash[:success].present? %>
-    <p><%= flash[:success] %></p>
+    <p class="flash-message"><%= flash[:success] %></p>
   <% end %>
 </div>
