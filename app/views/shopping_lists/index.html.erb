@@ -15,15 +15,13 @@
     <tbody>
       <% @ingredients.each do |food_name, ingredients| %>
         <% ingredients.each do |ingredient| %>
-          <tr>
-            <td><%= food_name %></td>
-            <td><%= @missing_numbers[food_name] %> <%= ingredient.food.measurement_unit %></td>
-            <td><%= number_to_currency(ingredient.food.price * @missing_numbers[food_name]) %></td>
-          </tr>
-        <% end %>
+  <tr>
+    <td><%= food_name %></td>
+    <td><%= ingredient.quantity %> x <%= ingredient.food.measurement_unit %></td>
+    <td><%= number_to_currency(ingredient.food.price * ingredient.quantity) %></td>
+  </tr>
+<% end %>
       <% end %>
     </tbody>
   </table>
-
-  <button class="button">Clear List</button>
 </div>

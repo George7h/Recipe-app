@@ -1,18 +1,32 @@
+<h1>Create a new Recipe</h1>
 
-  <h1>Create a new Recipe</h1>
-
-  <%= form_with model: [@recipe], data: { turbo: false }, local: true do |f| %>
-    <div>
+<%= form_with model: [@recipe], data: { turbo: false }, local: true, class: "add-food-form" do |f| %>
+  <div class="form-fields">
       <%= f.label :name %>
-      <%= f.text_field :name, required: true %><br>
-      <%= f.label :preparation_time %>
-      <%= f.number_field :preparation_time, required: true, step: 0.1 %><br>
-      <%= f.label :cooking_time %>
-      <%= f.number_field :cooking_time, required: true, step: 0.1 %><br>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-      <%= f.check_box :public %><br>
-      <%= f.label :public %>
-    <%= f.submit "Create Recipe" %>
+      <%= f.text_field :name, required: true, class: "text-input" %><br>
     </div>
-  <% end %>
+
+    <div class="form-field">
+      <%= f.label :preparation_time %>(minutes)
+      <%= f.number_field :preparation_time, required: true, step: 1, class: "text-input" %><br>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :cooking_time %>(minutes)
+      <%= f.number_field :cooking_time, required: true, step: 1, class: "text-input" %><br>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "text-input" %>
+    </div>
+
+    <div class="form-field-public">
+      <%= f.label :public %><%= f.check_box :public %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "Create Recipe", class: "submit-button" %>
+    </div>
+
+<% end %>

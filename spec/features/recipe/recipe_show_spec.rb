@@ -27,11 +27,11 @@ RSpec.describe 'When I open user show page', type: :feature do
   end
 
   it 'shows the cooking time of the recipe' do
-    expect(page).to have_content('Cooking time: 1 hour')
+    expect(page).to have_content('Cooking time: 1 minutes')
   end
 
   it 'shows the preparation time of the recipe' do
-    expect(page).to have_content('Preparation time: 2 hours')
+    expect(page).to have_content('Preparation time: 2 minutes')
   end
 
   it 'shows the full description of the recipes' do

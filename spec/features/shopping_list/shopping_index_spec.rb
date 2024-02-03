@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'shopping_lists/index', type: :view do
   before(:each) do
-    assign(:ingredients,
-           { 'Coconut' => [double('Ingredient',
-                                  food: double('Food', name: 'Coconut', measurement_unit: 'kg', price: 2.5))] })
+    coconut_food = double('Food', name: 'Coconut', measurement_unit: 'kg', price: 2.5)
+    coconut_ingredient = double('Ingredient', food: coconut_food, quantity: 2)
+
+    assign(:ingredients, { 'Coconut' => [coconut_ingredient] })
     assign(:missing_numbers, { 'Coconut' => 2 })
     assign(:total_price, 5.0)
 
@@ -34,7 +35,7 @@ RSpec.describe 'shopping_lists/index', type: :view do
   end
 
   it 'renders the quantity and measurement unit in the table' do
-    expect(rendered).to have_selector('tbody td', text: '2 kg')
+    expect(rendered).to have_selector('tbody td', text: '2 x kg')
   end
 
   it 'renders the total price in the table' do

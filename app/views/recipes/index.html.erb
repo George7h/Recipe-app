@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="header">
+  <div class="heading1">
     <h1>My Recipes</h1>
 
     <% if can? :create, Recipe %>
@@ -11,14 +11,14 @@
     <% @recipes.each_with_index do |recipe, i| %>
       <li class="recipe-card">
         <%= link_to "/recipes/#{recipe.id}" do %>
-          <div>
+          <div class="recipe-card-details">
             <h2><%= recipe.name %></h2>
-          </div>
+          
         <% end %>
 
         <% if can? :destroy, recipe %>
           <%= form_with model: recipe, url: recipe_path(recipe), method: :delete do |f| %>
-            <div>
+            
               <%= f.submit "REMOVE", class: "button button-danger" %>
             </div>
           <% end %>

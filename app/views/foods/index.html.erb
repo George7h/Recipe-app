@@ -1,8 +1,8 @@
 <div class="container">
-  <header>
+  <div class="heading1">
     <h1>Food List</h1>
     <%= link_to "Add Food", new_food_path, class: "button button-primary" %>
-  </header>
+  </div>
   <table class="shopping-list">
     <thead>
       <tr>
@@ -18,7 +18,7 @@
           <td><%= food.name %></td>
           <td><%= food.measurement_unit %></td>
           <td><%= food.price %></td>
-          <td>
+          <td id="table_delete_button">
             <%= button_to "Delete", food_path(food), method: :delete, data: { confirm: "Are you sure?" }, class: "button button-danger" %>
           </td>
         </tr>

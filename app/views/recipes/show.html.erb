@@ -1,7 +1,7 @@
 <div id="recipe_details">
   <h1><%= @recipe.name %></h1>
   <% if current_user == @recipe.user %>
-    <%= button_to recipe_path(@recipe.id), :method => :patch do %>
+    <%= button_to recipe_path(@recipe.id),class:"create-recipe", :method => :patch do %>
       <% if @recipe.public %>
         Public
         <i></i>
@@ -12,8 +12,8 @@
     <% end %>
   <% end %>
 
-  <p>Preparation time: <%= @recipe.preparation_time %> <%= "hour".pluralize(@recipe.preparation_time) %></p>
-  <p>Cooking time: <%= @recipe.cooking_time %> <%= "hour".pluralize(@recipe.cooking_time) %></p>
+  <p>Preparation time: <%= @recipe.preparation_time %> <%= "minutes".pluralize(@recipe.preparation_time) %></p>
+  <p>Cooking time: <%= @recipe.cooking_time %> <%= "minutes".pluralize(@recipe.cooking_time) %></p>
   <p><%= @recipe.description %></p>
 </div>
 
@@ -26,7 +26,7 @@
 <% end %>
 
 <div id="recipe_foods">
-  <table>
+  <table class="shopping-list">
     <thead class="border-b">
       <tr>
         <th>Food</th>
@@ -41,9 +41,9 @@
           <td><%= recipe_food.food.name %></td>
           <td><%= recipe_food.quantity %></td>
           <td><%= recipe_food.food.price * recipe_food.quantity %></td>
-          <td>
-            <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete%>
-            <%= link_to "Edit", edit_recipe_recipe_food_path(@recipe, recipe_food) %>
+          <td id="delete_edit">
+            <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food),class:"button-danger", method: :delete%>
+            <%= link_to "Edit", edit_recipe_recipe_food_path(@recipe, recipe_food),id:"button-danger2" %>
           </td>
         </tr>
       <% end %>

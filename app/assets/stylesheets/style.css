@@ -4,6 +4,19 @@ body {
   color: #333;
 }
 
+.heading1 {
+  gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+#table_delete_button {
+  justify-content: center;
+  display: flex;
+}
+
 #Log-out {
   color: white;
   background-color: #d2602b;
@@ -58,6 +71,25 @@ button {
   background-color: #f5f5f5;
   padding: 15px;
   border-radius: 5px;
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.recipe-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+.recipe-card-public {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  gap: 15rem;
+  align-items: center;
 }
 
 .recipe-card img {
@@ -86,13 +118,35 @@ button {
   cursor: pointer;
 }
 
+.create-recipe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
 .button:hover {
   background-color: #0062cc;
+}
+
+#delete_edit {
+  display: flex;
+  gap: 10px;
 }
 
 .button-danger {
   background-color: #dc3545;
   color: white;
+}
+
+#button-danger2 {
+  background-color: #95ef79;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* Recipe show styles */
@@ -223,4 +277,95 @@ nav a:hover {
 
 button:hover {
   background-color: #0062cc;
+}
+
+.new_food {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.new_food label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.new_food input[type="text"],
+.New_food input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+#recipe_preparation_time {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+#recipe_cooking_time {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+#recipe_description {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.new_food input[type="submit"] {
+  background-color: #66d86a;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.add-food-form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-food-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-food-form input[type="text"],
+.add-food-form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.add-food-form input[type="submit"] {
+  background-color: #66d86a;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.form-field-public {
+  display: flex;
 }
