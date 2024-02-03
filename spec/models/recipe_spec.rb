@@ -21,7 +21,6 @@ RSpec.describe Recipe, type: :model do
     { 'user' => @user, 'name' => 'Greek Salad', 'preparation_time' => 5, 'cooking_time' => 0 }
   end
 
-
   before :all do
     @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
   end
