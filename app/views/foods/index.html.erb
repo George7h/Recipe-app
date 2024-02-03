@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="heading1">
+    <h1>Food List</h1>
+    <%= link_to "Add Food", new_food_path, class: "button button-primary" %>
+  </div>
+  <table class="shopping-list">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Measurement Unit</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foodlist.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= food.price %></td>
+          <td id="table_delete_button">
+            <%= button_to "Delete", food_path(food), method: :delete, data: { confirm: "Are you sure?" }, class: "button button-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
