@@ -1,11 +1,12 @@
-<div>
-  <h1>Edit Ingredient</h1>
+<h1>Edit Ingredient</h1>
 
-  <%= form_with url: recipe_recipe_food_path, method: :patch, model: @recipe_food do |form| %>
-      <%= form.label :quantity %>
-      <%= form.number_field :quantity, min: 1, required: true %>
-      <%= form.label :food_id %>
-      <%= form.collection_select :food_id, current_user.foods, :id, :name, { include_blank: false } %>
-      <%= form.submit "Update" %>
-  <% end %>
-</div>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
+<%= form_with url: recipe_recipe_food_path, method: :patch, model: @recipe_food do |form| %>
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, min: 1,  required: true %>
+    <%= form.collection_select :food_id, current_user.foods, :id, :name, { include_blank: false } %> 
+    <%= form.submit "Update" %>
+<% end %>

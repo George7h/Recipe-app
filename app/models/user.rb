@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  has_many :recipes
-  has_many :foods
+  has_many :recipes, dependent: :delete_all
+  has_many :foods, dependent: :delete_all
 end

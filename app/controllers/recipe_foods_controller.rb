@@ -1,6 +1,4 @@
-class RecipeFoodController < ApplicationController
-  def index; end
-
+class RecipeFoodsController < ApplicationController
   def new
     @recipe_food = RecipeFood.new
   end

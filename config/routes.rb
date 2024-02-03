@@ -15,7 +15,7 @@ end
 resources :foods, only: [:index, :new, :create, :destroy]
 resources :shopping_lists, only: [:index]
 resources :recipes, only: [:index, :new, :create, :show, :update, :destroy] do
-  resources :recipe_food
+  resources :recipe_foods
 end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

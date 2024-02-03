@@ -6,14 +6,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
   <header>
 <nav>
-  <div>
-    <a href="#">Recipe App</a>
-    <div >
+    <div class="navigation">
+      <a href="#">Recipe App</a>
       <div>
         <% if user_signed_in? %>
           <%= link_to "Foods", foods_path %>
@@ -22,10 +21,10 @@
           <%= link_to "Shopping List", '/shopping_lists' %>
         <% end %>
       </div>
-      <div>
+      <div id="log-in-log-out">
         <% if user_signed_in? %>
           <p>Welcome <%= current_user.name.capitalize %>!</p>
-          <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
+          <%= button_to "Log Out", destroy_user_session_path, method: :delete,id:'Log-out' %>
         <% end %>
         <% unless user_signed_in? %>
           <%= link_to "Sign In", new_user_session_path %>
@@ -33,7 +32,6 @@
         <% end %>
       </div>
     </div>
-  </div>
 </nav>
     </header>
 
