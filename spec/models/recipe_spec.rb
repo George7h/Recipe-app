@@ -5,7 +5,7 @@ RSpec.describe Recipe, type: :model do
   let(:no_name) { { 'user' => @user, 'preparation_time' => 0, 'cooking_time' => 0 } }
   let(:name_too_long) { { 'user' => @user, 'name' => '0' * 251, 'preparation_time' => 0, 'cooking_time' => 0 } }
   let(:description_too_long) do
-    { 'user' => @user, 'name' => 'Greek Salad', 'description' => '0' * 2001, 'preparation_time' => 0,
+    { 'user' => @user, 'name' => 'Greek Salad', 'description' => '0' * 6001, 'preparation_time' => 0,
       'cooking_time' => 0 }
   end
   let(:preparation_time_string) do
@@ -20,6 +20,7 @@ RSpec.describe Recipe, type: :model do
   let(:preparation_time_integer) do
     { 'user' => @user, 'name' => 'Greek Salad', 'preparation_time' => 5, 'cooking_time' => 0 }
   end
+
 
   before :all do
     @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
@@ -40,7 +41,7 @@ RSpec.describe Recipe, type: :model do
       expect(Recipe.new(name_too_long)).to_not be_valid
     end
 
-    it 'is not valid with name exceeding 2000 characters' do
+    it 'is not valid with name exceeding 6000 characters' do
       expect(Recipe.new(description_too_long)).to_not be_valid
     end
   end
